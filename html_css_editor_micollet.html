@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang='fr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Éditeur HTML & CSS</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+        textarea { width: 90%; height: 200px; margin: 10px; }
+        button { padding: 10px 20px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h2>Éditeur HTML & CSS</h2>
+    
+    <label>Nom du fichier HTML :</label>
+    <input type='text' id='html_filename' value='index.html'><br>
+    <textarea id='html_code' placeholder='Écrivez votre code HTML ici...'></textarea>
+    
+    <label>Nom du fichier CSS :</label>
+    <input type='text' id='css_filename' value='style.css'><br>
+    <textarea id='css_code' placeholder='Écrivez votre code CSS ici...'></textarea>
+    
+    <button onclick='saveFile("html")'>Enregistrer HTML</button>
+    <button onclick='saveFile("css")'>Enregistrer CSS</button>
+    
+    <script>
+        function saveFile(type) {
+            let content = type === "html" ? document.getElementById('html_code').value : document.getElementById('css_code').value;
+            let filename = type === "html" ? document.getElementById('html_filename').value : document.getElementById('css_filename').value;
+            
+            let blob = new Blob([content], { type: 'text/plain' });
+            let a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = filename;
+            a.click();
+        }
+    </script>
+</body>
+</html>
