@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Éditeur HTML/CSS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 80%;
+      margin-top: 20px;
+    }
+    textarea {
+      width: 45%;
+      height: 300px;
+      margin-top: 20px;
+      font-family: monospace;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      box-sizing: border-box;
+      resize: none;
+    }
+    iframe {
+      width: 45%;
+      height: 300px;
+      border: 1px solid #ccc;
+      margin-top: 20px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      margin-right: 10px;
+    }
+    .buttons-container {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Éditeur HTML et CSS</h1>
+
+  <div class="container">
+    <textarea id="htmlCode" placeholder="Écrivez votre code HTML ici..."></textarea>
+    <textarea id="cssCode" placeholder="Écrivez votre code CSS ici..."></textarea>
+  </div>
+
+  <div class="container">
+    <iframe id="preview"></iframe>
+  </div>
+
+  <div class="buttons-container">
+    <button id="saveHtmlBtn">Enregistrer HTML</button>
+    <button id="saveCssBtn">Enregistrer CSS</button>
+    <button id="openHtmlBtn">Ouvrir HTML</button>
+    <button id="openCssBtn">Ouvrir CSS</button>
+  </div>
+
+  <script>
+    // Récupérer les éléments du DOM
+    const htmlCode = document.getElementById('htmlCode');
+    const cssCode = document.getElementById('cssCode');
+    const preview = document.getElementById('preview');
+    const saveHtmlBtn = document.getElementById('saveHtmlBtn');
+    const saveCssBtn = document.getElementById('saveCssBtn');
+    const openHtmlBtn = document.getElementById('openHtmlBtn');
+    const openCssBtn = document.getElementById('openCssBtn');
+
+    // Fonction pour mettre à jour l'aperçu
+    function updatePreview() {
+      const htmlContent = htmlCode.value;
+      const cssContent = cssCode.value;
+      preview.srcdoc = `
+        <style>${cssContent}</style>
+        ${htmlContent}
+      `;
+    }
+
+    // Mettre à jour l'aperçu à chaque modification des zones de texte
+    htmlCode.addEventListener('input', updatePreview);
+    cssCode.addEventListener('input', updatePreview);
+
+    // Enregistrer le code HTML dans un fichier
+    saveHtmlBtn.addEventListener('click', () => {
+      const htmlBlob = new Blob([htmlCode.value], { type: 'text/html' });
+      const url = URL.createObjectURL(htmlBlob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'index.html';
+      a.click();
+    });
+
+    // Enregistrer le code CSS dans un fichier
+    saveCssBtn.addEventListener('click', () => {
+      const cssBlob = new Blob([cssCode.value], { type: 'text/css' });
+      const url = URL.createObjectURL(cssBlob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'style.css';
+      a.click();
+    });
+
+    // Ouvrir un fichier HTML
+    openHtmlBtn.addEventListener('click', () => {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = '.html';
+      input.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onload = () => {
+          htmlCode.value = reader.result;
+          updatePreview();
+        };
+        reader.readAsText(file);
+      });
+      input.click();
+    });
+
+    // Ouvrir un fichier CSS
+    openCssBtn.addEventListener('click', () => {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = '.css';
+      input.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onload = () => {
+          cssCode.value = reader.result;
+          updatePreview();
+        };
+        reader.readAsText(file);
+      });
+      input.click();
+    });
+  </script>
+
+</body>
+</html>
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+
